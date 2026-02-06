@@ -5,8 +5,8 @@ from unidecode import unidecode
 from io import BytesIO
 import polars as pl
 
-st.title('Consulta Candidatos')
-st.write('Ferramenta para conferir ')
+st.title('Gerar dados dos Candidatos')
+st.write('Ferramenta para gerar dados a partir dos filtro selecionados')
 
 estados = {
         'AC': 'Acre',
@@ -94,7 +94,6 @@ def generate_filename(ano, sigla_estado, bairro='', municipio='', candidato='', 
     if params:
         filename += ' ' + f"{' - '.join(params)}"
     filename += '.xlsx'
-    print(filename)
 
     return filename
 
@@ -133,7 +132,6 @@ partido = st.checkbox('Partido(s)')
 if partido:
     partido_input = st.text_input('Partido(s)', placeholder='ex.: PSD ou PSD, NOVO', label_visibility='collapsed')
 
-print(anos_select, sigla_estado)
 if st.button('Carregar dados'):
     if not anos_select or not sigla_estado:
         st.warning('Preencha todos os campos obrigatórios (Ano e Sigla do Estado)')
@@ -145,7 +143,6 @@ if st.button('Carregar dados'):
                     df = load_data(ano, sigla_estado, bairro=bairro_input, municipio=municipio_input, candidato=candidato_input, partido=partido_input)
                     dfs.append(df)
                     
-                print(dfs)
                 filename = generate_filename(anos_select, sigla_estado, bairro=bairro_input, municipio=municipio_input, candidato=candidato_input, partido=partido_input)
                 new_df = pd.concat(dfs)
                 st.dataframe(new_df, hide_index=True)

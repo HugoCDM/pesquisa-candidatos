@@ -4,7 +4,7 @@ from requests.utils import quote
 from gerar_dados_dos_candidatos import estados
 from concurrent.futures import ThreadPoolExecutor
 
-st.title('Identificar presença dos candidatos nas urnas')
+st.title('Identificar a presença dos candidatos nas urnas')
 st.write('Ferramenta para identificar os candidatos pela nome aproximado e se eles estão presentes nas urnas do ano de 2016 a 2024')
 
 
@@ -35,7 +35,6 @@ def detectar_candidatos(ano, sigla_estado, nome_urna):
         return candidatos[['Nome do candidato', 'Anos', 'Status']]
 
     except:
-        print('nao achou')
         return pd.DataFrame(columns=['Nome do candidato', 'Anos', 'Status'])
     
 @st.cache_data
@@ -66,8 +65,7 @@ def procurar_candidato(nome_urna:str, sigla_estado):
     try:
         colunas_pivot = set(df_pivot.columns[1:])
         anos_set = set(anos)
-        # print('lista pivot', list(df_pivot.columns[1:]))
-        # print('lista anos', anos)
+
         if colunas_pivot != anos_set: 
             
             diferenca = anos_set.difference(colunas_pivot)
@@ -77,7 +75,7 @@ def procurar_candidato(nome_urna:str, sigla_estado):
             
             
     except Exception as e:
-        print('nao', e)
+        pass
 
     
     
