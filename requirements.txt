@@ -4,3 +4,4 @@ polars
 plotly 
 openpyxl 
 pandas
+xlsxwriter
