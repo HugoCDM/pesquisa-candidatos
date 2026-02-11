@@ -42,7 +42,7 @@ estados = {
 }
 
 
-@st.cache_data(ttl=26298000, persist='disk')
+@st.cache_data
 def load_data(ano, sigla_estado, bairro: list ='', municipio: list ='', candidato: list ='', partido: list ='', columns=''):
     
     link = f'https://raw.githubusercontent.com/HugoCDM/candidatos/main/Elei%C3%A7%C3%B5es%20{ano}%20-%20{quote(estados[sigla_estado.upper()])}.csv.gz'
