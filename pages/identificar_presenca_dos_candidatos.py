@@ -24,7 +24,7 @@ def normalize_data(df):
     return df.with_columns([
         pl.col('Nome do candidato').str.replace('PEDRO DUARTE JR', 'PEDRO DUARTE')])
 
-@st.cache_data(ttl=26298000, persist='disk')
+@st.cache_data
 def detectar_candidatos(ano, sigla_estado, nome_urna=None, columns=None): 
     url = f'https://raw.githubusercontent.com/HugoCDM/candidatos/main/Elei%C3%A7%C3%B5es%20{ano}%20-%20{quote(estados[sigla_estado.upper()])}.csv.gz'
     candidatos = pl.scan_csv(url, low_memory=True, infer_schema_length=0)
