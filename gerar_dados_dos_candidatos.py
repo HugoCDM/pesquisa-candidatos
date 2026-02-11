@@ -1,6 +1,5 @@
 import streamlit as st
 from requests.utils import quote
-from unidecode import unidecode
 from io import BytesIO
 import polars as pl
 
