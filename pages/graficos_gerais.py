@@ -4,14 +4,11 @@ from requests.utils import quote
 import polars as pl
 import plotly.express as px
 
-
-
 st.set_page_config(page_title='asd', layout='wide')
 st.title('Comparativo geral individual do candidato')
 
 col1, col2  = st.columns([1, 1])
 anos = [2016, 2018, 2020, 2022, 2024]
-
 
 
 def normalize_data(df):
