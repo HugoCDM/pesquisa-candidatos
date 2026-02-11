@@ -18,7 +18,7 @@ def normalize_data(df):
         pl.col('Cargo').str.to_uppercase()
     ])
 
-@st.cache_data(ttl=26298000, persist='disk')
+@st.cache_data
 def read_csv(ano, sigla_estado, columns=None):
 
     url = f'https://raw.githubusercontent.com/HugoCDM/candidatos/main/Elei%C3%A7%C3%B5es%20{ano}%20-%20{quote(estados[sigla_estado.upper()])}.csv.gz'
